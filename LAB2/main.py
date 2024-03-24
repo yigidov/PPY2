@@ -16,7 +16,7 @@ Write a Python program that takes input from the user to create a list of intege
   a. Input: Ask the user to enter a series of space-separated integers.
 
   b. Convert Input: Convert the input string into a list of integers.
-  
+
   c. Sorting: Sort the list in ascending order.
 
   example:
@@ -28,16 +28,20 @@ Write a Python program that takes input from the user to create a list of intege
 """
 
 # Input
-input_numbers = input("Enter a series of space-separated integers: ")
+input_str = input("Enter a series of space-separated integers: ")
+# Split the input string into individual integers
+integer_list = [int(num) for num in input_str.split()]
+print("List of integers:", integer_list)
 
 # Convert Input:
 
+integer_list = [int(num) for num in input_str.split()]
 
 # Sorting:
-
+integer_list.sort()
 
 # Print Output
-print("Sorted list:", numbers_list)
+print("Sorted list of :", integer_list)
 
 """-----------------------------------------------------------------------------
 
@@ -64,7 +68,7 @@ Extend the previous Python program to include tuples. Now, in addition to creati
   example:
   ```
   Enter a series of space-separated integers: 5 2 8 1 9
-  
+
   Sorted list: [1, 2, 5, 8, 9]
   Sorted tuple: (1, 2, 5, 8, 9)
   ```
@@ -74,11 +78,11 @@ Extend the previous Python program to include tuples. Now, in addition to creati
 input_numbers = input("Enter a series of space-separated integers: ")
 
 # Convert Input:
-
-
+numbers_list = list(map(int, input_numbers.split()))
+tuple1 = tuple(map(int, input_numbers.split()))
 # Sorting:
-
-
+numbers_list.sort()
+sorted_tuple = sorted(tuple1)
 # Print Output
 print("Sorted list:", numbers_list)
 print("Sorted tuple:", sorted_tuple)
@@ -89,11 +93,11 @@ Extend the previous Python program to demonstrate the manipulation of lists usin
   a. Input: Ask the user to enter a series of space-separated integers.
 
   b. Convert Input: Convert the input string into a list of integers and a tuple of integers.
-  
+
   c. Manipulate List: Use the append(), insert(), and remove() functions to modify the list.
-  
+
   d. Attempt to Modify Tuple: Try to modify the tuple using the same operations as the list.
-  
+
   e. Print Output: Print the modified list and attempt to print the modified tuple.
 
   example:
@@ -110,24 +114,30 @@ Extend the previous Python program to demonstrate the manipulation of lists usin
 input_numbers = input("Enter a series of space-separated integers: ")
 
 # Convert Input
-
+numbers_list = list(map(int, input_numbers.split()))
+numbers_tuple = tuple(map(int, input_numbers.split()))
 
 # Manipulate List
 #   Append 10 to the list
+numbers_list.append(10)
 #   Insert 20 at index 2
-#   Remove one elementfrom the list
-
+numbers_list.insert(2, 20)
+#   Remove one element from the list
+numbers_list.remove(10)
 # Attempt to Modify Tuple (this will raise an error)
 try:
     #   Append 10 to the tuple
+    numbers_tuple.append(10)
 except AttributeError:
     print("Tuples are immutable and cannot be modified.")
 try:
     #   Insert 20 at index 2
+    numbers_tuple.append(2, 20)
 except AttributeError:
     pass  # Insert operation will also raise an error
 try:
     #   Remove one element  from the tuple
+    numbers_tuple.remove(1)
 except AttributeError:
     pass  # Remove operation will also raise an error
 
@@ -194,27 +204,39 @@ Additionally, introduce sets and dictionaries and perform basic operations on th
 input_numbers = input("Enter a series of space-separated integers: ")
 
 # Convert Input
-
+numbers_list = list(map(int, input_numbers.split()))
+numbers_tuple = tuple(map(int, input_numbers.split()))
+numbers_dict = {n: input_numbers.split().count(str(n)) for n in map(int, input_numbers.split())}
 # Manipulate List
 # Append 10 to the list
+numbers_list.append(10)
 # Insert 20 at index 2
+numbers_list.insert(2, 20)
 # Remove the element 8
-
+numbers_list.remove(8)
 # Attempt to Modify Tuple (this will raise an error)
 try:
     # Append 10 to the tuple
+    numbers_tuple.append(10)
 except AttributeError:
     print("Tuples are immutable and cannot be modified.")
 
 # Set Operations
+numbers_set = set(numbers_list)
+numbers_tuple_set = set(numbers_tuple)
 # Union
+set_union = numbers_set.union(numbers_tuple_set)
 # Intersection
+set_intersection = numbers_set.intersection(numbers_tuple_set)
 # Difference
-
+set_difference = numbers_set.difference(numbers_tuple_set)
 # Dictionary Operations
 print("Original Dictionary:", numbers_dict)
 # Add a new key-value pair
+numbers_dict[100] = 1000
 # Delete an existing key-value pair
+if numbers_dict.get(8) is not None:
+    del numbers_dict[8]
 
 # Print Output
 print("Modified list:", numbers_list)
@@ -269,31 +291,45 @@ print("Updated Dictionary:", numbers_dict)
 input_numbers = input("Enter a series of space-separated integers: ")
 
 # Convert Input
-
+numbers_list = list(map(int, input_numbers.split()))
+numbers_tuple = tuple(map(int, input_numbers.split()))
+numbers_dict = {n: input_numbers.split().count(str(n)) for n in map(int, input_numbers.split())}
 # Manipulate List
+numbers_list.append(10)
+numbers_list.insert(2, 20)
+numbers_list.remove(8)
 
 # Attempt to Modify Tuple (this will raise an error)
-
+try:
+    numbers_tuple.append(10)
+except AttributeError:
+    print("Tuples are immutable and cannot be modified.")
 # Set Operations
-
+numbers_set = set(numbers_list)
+numbers_tuple_set = set(numbers_tuple)
+set_union = numbers_set.union(numbers_tuple_set)
+set_intersection = numbers_set.intersection(numbers_tuple_set)
+set_difference = numbers_set.difference(numbers_tuple_set)
 # Dictionary Operations
 print("Original Dictionary:", numbers_dict)
 # Add a new key-value pair
+numbers_dict[100] = 1000
 # Delete an existing key-value pair
-
+if numbers_dict.get(8) is not None:
+    del numbers_dict[8]
 # Type Conversion
-# list_to_tuple =
-# list_to_set =
-# list_to_dict =
-# tuple_to_list =
-# tuple_to_set =
-# tuple_to_dict =
-# set_to_list =
-# set_to_tuple =
-# set_to_dict =
-# dict_to_list =
-# dict_to_tuple =
-# dict_to_set =
+list_to_tuple = tuple(numbers_list)
+list_to_set = set(numbers_list)
+list_to_dict = {n: n ** 2 for n in numbers_list}
+tuple_to_list = list(numbers_tuple)
+tuple_to_set = set(numbers_tuple)
+tuple_to_dict = {n: n ** 2 for n in numbers_tuple}
+set_to_list = list(numbers_set)
+set_to_tuple = tuple(numbers_set)
+set_to_dict = {n: n ** 2 for n in numbers_set}
+dict_to_list = list(numbers_dict.items())
+dict_to_tuple = tuple(numbers_dict.items())
+dict_to_set = set(numbers_dict.items())
 
 # Print Output
 print("List to Tuple:", list_to_tuple)
@@ -337,54 +373,109 @@ Extend the previous Python program to write the output to a file and perform ope
 input_numbers = input("Enter a series of space-separated integers: ")
 
 # Convert Input
-
+numbers_list = list(map(int, input_numbers.split()))
+numbers_tuple = tuple(map(int, input_numbers.split()))
+numbers_dict = {n: input_numbers.split().count(str(n)) for n in map(int, input_numbers.split())}
 # Manipulate List
-
+numbers_list.append(10)
+numbers_list.insert(2, 20)
+numbers_list.remove(8)
 # Attempt to Modify Tuple (this will raise an error)
-
+try:
+    numbers_tuple.append(10)
+except AttributeError:
+    print("Tuples are immutable and cannot be modified.")
 # Set Operations
-
+numbers_set = set(numbers_list)
+numbers_tuple_set = set(numbers_tuple)
+set_union = numbers_set.union(numbers_tuple_set)
+set_intersection = numbers_set.intersection(numbers_tuple_set)
+set_difference = numbers_set.difference(numbers_tuple_set)
 # Dictionary Operations
-
+print("Original Dictionary:", numbers_dict)
+numbers_dict[100] = 1000
+if numbers_dict.get(8) is not None:
+    del numbers_dict[8]
 # Type Conversion
+list_to_tuple = tuple(numbers_list)
+list_to_set = set(numbers_list)
+list_to_dict = {n: n ** 2 for n in numbers_list}
+tuple_to_list = list(numbers_tuple)
+tuple_to_set = set(numbers_tuple)
+tuple_to_dict = {n: n ** 2 for n in numbers_tuple}
+set_to_list = list(numbers_set)
+set_to_tuple = tuple(numbers_set)
+set_to_dict = {n: n ** 2 for n in numbers_set}
+dict_to_list = list(numbers_dict.items())
+dict_to_tuple = tuple(numbers_dict.items())
+dict_to_set = set(numbers_dict.items())
 
 student_number = input("Enter your student number: ")
 
 # Write Output to File like this:
-    "Student Number: " + student_number
+filename = "output.txt"
+content = f"""Student Number: {student_number}
 
-    "Original List: " + str(numbers_list)
-    "Original Tuple: " + str(numbers_tuple)
-    "Original Set: " + str(numbers_set)
-    "Original Dictionary: " + str(numbers_dict)
+Original List: {numbers_list}
+Original Tuple: {numbers_tuple}
+Original Set: {numbers_set}
+Original Dictionary: {numbers_dict}
 
-    "Manipulated List: " + str(numbers_list)
-    "Manipulated Tuple: " + str(numbers_tuple)
-    "Union of Set: " + str(set_union)
-    "Intersection of Set: " + str(set_intersection)
-    "Difference of Set: " + str(set_difference)
-    "Updated Dictionary: " + str(numbers_dict)
+Manipulated List: {numbers_list}
+Manipulated Tuple: {numbers_tuple}
+Union of Set: {set_union}
+Intersection of Set: {set_intersection}
+Difference of Set: {set_difference}
+Updated Dictionary: {numbers_dict}
 
-    "List to Tuple: " + str(list_to_tuple)
-    "List to Set: " + str(list_to_set)
-    "List to Dictionary: " + str(list_to_dict)
-    "Tuple to List: " + str(tuple_to_list)
-    "Tuple to Set: " + str(tuple_to_set)
-    "Tuple to Dictionary: " + str(tuple_to_dict)
-    "Set to List: " + str(set_to_list)
-    "Set to Tuple: " + str(set_to_tuple)
-    "Set to Dictionary: " + str(set_to_dict)
-    "Dictionary to List: " + str(dict_to_list)
-    "Dictionary to Tuple: " + str(dict_to_tuple)
-    "Dictionary to Set: " + str(dict_to_set)
+List to Tuple: {list_to_tuple}
+List to Set: {list_to_set}
+List to Dictionary: {list_to_dict}
+Tuple to List: {tuple_to_list}
+Tuple to Set: {tuple_to_set}
+Tuple to Dictionary: {tuple_to_dict}
+Set to List: {set_to_list}
+Set to Tuple: {set_to_tuple}
+Set to Dictionary: {set_to_dict}
+Dictionary to List: {dict_to_list}
+Dictionary to Tuple: {dict_to_tuple}
+Dictionary to Set: {dict_to_set}
+"""
+with open(filename, 'w') as file:
+    file.write(content)
 
 # print "Content of the file:"
 
+print("\nContent of the file:")
+with open(filename, 'r') as file:
+    print(file.read())
 # Perform Operations on File:
+line_count = 0
+integer_count = 0
+integer_sum = 0
+with open(filename, 'r') as file:
+    for line in file:
+        line_count += 1
+        words = line.split()
+
+        for word in words:
+            if word.isdigit():
+                integer_count += 1
+                integer_sum += int(word)
 #   Count the number of lines in the file
+print(f"Number of lines: {line_count}")
 #   Count the number of integers in the file
+print(f"Number of integers: {integer_count}")
 #   Add all integers in the file (sum).
+print(f"Sum of integers: {integer_sum}")
 #   Modify the content of the file
+modify_content = "This is an additional line for demonstration.\n"
+with open(filename, 'a') as file:
+    file.write(modify_content)
+
+print("\nContent of the modified file:")
+with open(filename, 'r') as file:
+    print(file.read())
 
 """--------------------------------------------------------------------------------
 **Control Statements:**
@@ -445,7 +536,65 @@ These are fundamental constructs in Python programming that enable you to contro
 """
 
 
+### You need to run Task 8 and create output.txt to run task 9
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+
+def find_primes_up_to(n):
+    return [x for x in range(2, n + 1) if is_prime(x)]
+
+
+try:
+    with open('output.txt', 'r') as file:
+        content = file.read()
+        integers = []
+        number = ''
+        for char in content:
+            if char.isdigit():
+                number += char
+            elif number:
+                integers.append(int(number))
+                number = ''
+        if number:
+            integers.append(int(number))
+        if not integers:
+            raise ValueError("No integers found in file.")
+        largest_integer = max(integers)
+except FileNotFoundError:
+    print("The file 'output.txt' does not exist.")
+    exit()
+except ValueError as e:
+    print(e)
+    exit()
+
+prime_numbers = find_primes_up_to(largest_integer)
+
+sum_of_primes = sum(prime_numbers)
+
+largest_prime = max(prime_numbers) if prime_numbers else None
+smallest_prime = min(prime_numbers) if prime_numbers else None
+
+is_largest_integer_prime = is_prime(largest_integer)
+
+print(f"List of prime numbers up to {largest_integer}: {prime_numbers}")
+print(f"Sum of prime numbers: {sum_of_primes}")
+print(f"Largest prime number: {largest_prime}")
+print(f"Smallest prime number: {smallest_prime}")
+print(f"Is the largest integer ({largest_integer}) prime? {'Yes' if is_largest_integer_prime else 'No'}")
+
+with open('prime_numbers.txt', 'w') as file:
+    file.write(f"List of prime numbers up to {largest_integer}: {prime_numbers}\n")
+    file.write(f"Sum of prime numbers: {sum_of_primes}\n")
+    file.write(f"Largest prime number: {largest_prime}\n")
+    file.write(f"Smallest prime number: {smallest_prime}\n")
+    file.write(f"Is the largest integer ({largest_integer}) prime? {'Yes' if is_largest_integer_prime else 'No'}")
 
 """10.
-In the final main.py file, leave the results from task 8 and 9, commit and push
+In the final main.ipynb file, leave the results from task 8 and 9, commit and push
 """
